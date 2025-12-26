@@ -1,10 +1,15 @@
 @layer theme, base, antd, components, utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
+  /* Colors */
   --color-primary: #ef4444;
   --color-success: #10b981;
   --color-error: #ef4444;
   --color-warning: #f59e0b;
   --color-info: #0ea5e9;
+
+  /* Fonts */
+  --font-roboto: "Roboto", sans-serif;
 }
