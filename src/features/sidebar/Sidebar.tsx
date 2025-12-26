@@ -5,7 +5,8 @@ import { CollapsedMenu } from "./_components/CollapsedMenu";
 import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";
 import { SidebarToggle } from "./_components/SidebarToggle";
-import { type MenuItem } from "./menu";
+import { useMenuFilter } from "./_hooks/useMenuFilter";
+import type { MenuItem } from "./menu";
 import { toggleSidebar } from "./uiSlice";
 
 const { Sider } = Layout;
@@ -23,6 +24,8 @@ export const Sidebar = ({ menuItems }: Props) => {
     (state: RootState) => state.ui.isSidebarCollapsed
   );
 
+  const filteredMenuItems = useMenuFilter(menuItems);
+
   const handleToggle = () => {
     dispatch(toggleSidebar());
   };
@@ -34,16 +37,16 @@ export const Sidebar = ({ menuItems }: Props) => {
       onCollapse={handleToggle}
       trigger={null}
       width={250}
-      className="min-h-screen shadow-lg"
+      className="hidden md:block min-h-screen shadow-lg"
       theme="light"
     >
       <SidebarHeader isCollapsed={isCollapsed} />
 
       {/* Menu - Conditional rendering based on collapse state */}
       {isCollapsed ? (
-        <CollapsedMenu menuItems={menuItems} />
+        <CollapsedMenu menuItems={filteredMenuItems} />
       ) : (
-        <ExpandedMenu menuItems={menuItems} />
+        <ExpandedMenu menuItems={filteredMenuItems} />
       )}
 
       <SidebarToggle isCollapsed={isCollapsed} onToggle={handleToggle} />

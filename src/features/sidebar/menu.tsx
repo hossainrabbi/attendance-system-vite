@@ -6,6 +6,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import React from "react";
+import type { UserRole } from "../auth/authSlice";
 
 export interface MenuItem {
   key: string;
@@ -13,6 +14,7 @@ export interface MenuItem {
   icon?: React.ReactNode;
   path?: string;
   children?: MenuItem[];
+  roles?: UserRole[]; // Optional: if undefined, accessible by all
 }
 
 export const menuItems: MenuItem[] = [
@@ -21,16 +23,19 @@ export const menuItems: MenuItem[] = [
     label: "Dashboard",
     icon: <DashboardOutlined />,
     path: "/",
+    roles: ["ADMIN"],
   },
   {
     key: "users",
     label: "User Management",
     icon: <UserOutlined />,
+    roles: ["ADMIN"],
     children: [
       {
         key: "users-list",
         label: "All Users",
         path: "/users",
+        roles: ["USER"],
       },
       {
         key: "users-roles",
@@ -49,6 +54,7 @@ export const menuItems: MenuItem[] = [
     key: "settings",
     label: "Settings",
     icon: <SettingOutlined />,
+    roles: ["ADMIN"],
     children: [
       {
         key: "settings-general",

@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AdminLayout } from "./layouts/AdminLayout";
 import { Dashboard } from "./pages/Dashboard";
 import { Employees } from "./pages/Employees";
@@ -12,11 +13,16 @@ export default function App() {
     <Routes>
       <Route path="/" element={<AdminLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path="users" element={<Users />} />
-        <Route path="users/roles" element={<Roles />} />
+
+        {/* Admin Only Routes */}
+        <Route element={<ProtectedRoute allowedRoles={["ADMIN"]} />}>
+          <Route path="users" element={<Users />} />
+          <Route path="users/roles" element={<Roles />} />
+          <Route path="settings/general" element={<GeneralSettings />} />
+          <Route path="settings/security" element={<SecuritySettings />} />
+        </Route>
+
         <Route path="employees" element={<Employees />} />
-        <Route path="settings/general" element={<GeneralSettings />} />
-        <Route path="settings/security" element={<SecuritySettings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
