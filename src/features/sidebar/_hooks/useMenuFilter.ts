@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { selectUserRole, type UserRole } from "../../auth/authSlice";
+import { selectUserRole } from "../../auth/authSlice";
 import type { MenuItem } from "../menu";
 
 /**
@@ -13,25 +13,23 @@ export const useMenuFilter = (menuItems: MenuItem[]) => {
   return useMemo(() => {
     if (!userRole) return [];
 
-    const filterRecursive = (
-      items: MenuItem[],
-      inheritedRoles?: UserRole[]
-    ): MenuItem[] => {
+    const filterRecursive = (items: MenuItem[]): MenuItem[] => {
       return items
         .map((item): MenuItem | null => {
           // 1. Determine effective roles for this item
-          // If item has roles, use them. Otherwise, inherit from parent.
-          // For top-level items with no parent roles, this remains undefined (effectively hidden/no-access).
-          const itemRoles = item.roles || inheritedRoles;
+          // STRICT MODE: No inheritance. Only explicit roles on the item matter.
+          const itemRoles = item.roles;
 
           // 2. Check if this item matches the user's role directly
+          // If itemRoles is undefined/empty, it defaults to HIDDEN (false) unless we want public?
+          // User request: "if role are not added, it showing, but no need to show" -> So Undefined = Hidden.
           const hasRoleMatch =
             itemRoles && userRole ? itemRoles.includes(userRole) : false;
 
-          // 3. Process children with the current item's roles as inherited context
+          // 3. Process children
           let visibleChildren: MenuItem[] = [];
           if (item.children) {
-            visibleChildren = filterRecursive(item.children, itemRoles);
+            visibleChildren = filterRecursive(item.children);
           }
 
           // 4. Determine final visibility:

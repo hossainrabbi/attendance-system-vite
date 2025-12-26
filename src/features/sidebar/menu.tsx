@@ -29,7 +29,6 @@ export const menuItems: MenuItem[] = [
     key: "users",
     label: "User Management",
     icon: <UserOutlined />,
-    roles: ["ADMIN"],
     children: [
       {
         key: "users-list",
@@ -41,6 +40,7 @@ export const menuItems: MenuItem[] = [
         key: "users-roles",
         label: "Roles & Permissions",
         path: "/users/roles",
+        roles: ["ADMIN"],
       },
     ],
   },
@@ -54,18 +54,19 @@ export const menuItems: MenuItem[] = [
     key: "settings",
     label: "Settings",
     icon: <SettingOutlined />,
-    roles: ["ADMIN"],
     children: [
       {
         key: "settings-general",
         label: "General",
         path: "/settings/general",
+        roles: ["ADMIN"],
       },
       {
         key: "settings-security",
         label: "Security",
         icon: <SafetyCertificateOutlined />,
         path: "/settings/security",
+        roles: ["ADMIN"],
       },
     ],
   },
