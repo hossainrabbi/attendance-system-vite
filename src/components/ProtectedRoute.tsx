@@ -14,8 +14,8 @@ export const ProtectedRoute = ({
   const userRole = useSelector(selectUserRole);
 
   if (!userRole) {
-    // If no user is logged in, redirect to login (or home for now as we don't have login)
-    return <Navigate to="/" replace />;
+    // If no user is logged in, redirect to login
+    return <Navigate to="/login" replace />;
   }
 
   if (allowedRoles && !allowedRoles.includes(userRole)) {
