@@ -1,4 +1,4 @@
-import React from "react";
+import { type ReactNode } from "react";
 import type { UserRole } from "./features/auth/authSlice";
 import { Dashboard } from "./pages/Dashboard";
 import { Employees } from "./pages/Employees";
@@ -6,13 +6,13 @@ import { GeneralSettings } from "./pages/GeneralSettings";
 import { Login } from "./pages/Login";
 import { Roles } from "./pages/Roles";
 import { SecuritySettings } from "./pages/SecuritySettings";
-import { Users } from "./pages/Users";
+import Users from "./pages/Users";
 
 export type RouteLayout = "admin" | "auth";
 
 export interface AppRoute {
   path: string;
-  element: React.ReactNode;
+  element: ReactNode;
   roles?: UserRole[]; // Optional: if undefined, accessible by all (authenticated)
   index?: boolean;
   layout: RouteLayout;

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { selectUserRole, type UserRole } from "../features/auth/authSlice";
+import { selectUserRole, type UserRole } from "./authSlice";
 
 interface ProtectedRouteProps {
   allowedRoles?: UserRole[];

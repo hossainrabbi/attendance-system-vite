@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { selectIsAuthenticated } from "../features/auth/authSlice";
+import { selectIsAuthenticated } from "./authSlice";
 
 interface PublicRouteProps {
   children?: React.ReactNode;

@@ -34,7 +34,7 @@ export const menuItems: MenuItem[] = [
         key: "users-list",
         label: "All Users",
         path: "/users",
-        roles: ["USER"],
+        roles: ["ADMIN"],
       },
       {
         key: "users-roles",

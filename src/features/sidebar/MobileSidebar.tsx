@@ -34,7 +34,7 @@ export const MobileSidebar = ({ menuItems }: Props) => {
       placement="left"
       onClose={handleClose}
       open={isOpen}
-      width={250}
+      size={250}
       styles={{ body: { padding: 0 } }}
       title={<SidebarHeader isCollapsed={false} />}
       closeIcon={null} // Optional: hide default close icon if you want a custom header
