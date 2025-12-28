@@ -1,31 +1,35 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 /**
  * useDebounce
  *
- * @param initial   Initial value
- * @param delay     Debounce wait‑time (ms)
+ * Returns a debounced version of a value and an updater function.
  *
- * @returns [search, onSearch]
+ * @param initial Initial value
+ * @param delay   Debounce delay in milliseconds
+ *
+ * @returns [debouncedValue, setValue]
  *
  * Example:
- * const [search, onSearch] = useDebounce("", 400);
+ * const [debouncedSearch, setSearch] = useDebounce("", 400);
  */
+type UseDebounceReturn<T> = [T, (value: T) => void];
 
-type Props<T> = [T, (val: T) => void];
-
-export function useDebounce<T>(initial: T, delay = 500): Props<T> {
+export function useDebounce<T>(initial: T, delay = 500): UseDebounceReturn<T> {
   const [value, setValue] = useState<T>(initial);
-  const [search, setSearch] = useState<T>(initial);
+  const [debouncedValue, setDebouncedValue] = useState<T>(initial);
 
-  const onSearch = (val: T) => {
+  const updateValue = useCallback((val: T) => {
     setValue(val);
-  };
+  }, []);
 
   useEffect(() => {
-    const id = window.setTimeout(() => setSearch(value), delay);
-    return () => window.clearTimeout(id);
+    const timeoutId = window.setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => window.clearTimeout(timeoutId);
   }, [value, delay]);
 
-  return [search, onSearch];
+  return [debouncedValue, updateValue];
 }

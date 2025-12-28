@@ -1,4 +1,5 @@
 import CTable from "@/components/ui/CustomTable";
+import useTable from "@/hooks/useTable";
 import type { ColumnType } from "antd/es/table";
 import { useState } from "react";
 
@@ -14,6 +15,7 @@ interface User {
 }
 
 export const Roles = () => {
+  const { page, limit, setPagination } = useTable();
   const [loading, setLoading] = useState(false);
   const [data] = useState<User[]>([
     {
@@ -181,9 +183,10 @@ export const Roles = () => {
             selectable
             onSelectionChange={handleSelectionChange}
             paginationProps={{
-              limit: 10,
-              total: data.length,
-              page: 1,
+              limit,
+              page,
+              total: 100,
+              onPagination: setPagination,
             }}
           />
         </div>

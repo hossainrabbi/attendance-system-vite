@@ -1,67 +1,59 @@
 import { useState } from "react";
 
-export type ModalType<DataT = never, TypeT = never> = {
+export type DefaultModalType = "ADD" | "EDIT" | "VIEW" | "CONFIRM";
+
+export type ModalState<DataT = undefined, TypeT = DefaultModalType> = {
   open: boolean;
-  type?: "ADD" | "EDIT" | "VIEW" | "CONFIRM" | TypeT;
-  data?: string | number | DataT;
+  type?: TypeT;
+  data?: DataT;
 };
 
-export type ModalComponentProps<DataT = never, TypeT = never> = {
-  onClose: (val?: boolean) => void;
-} & ModalType<DataT, TypeT>;
+export type ModalComponentProps<
+  DataT = undefined,
+  TypeT = DefaultModalType
+> = ModalState<DataT, TypeT> & {
+  onClose: () => void;
+};
 
-type ReturnType<DataT, TypeT> = [
-  ModalType<DataT, TypeT>,
-  (data: Omit<ModalType<DataT, TypeT>, "open">) => void,
+type UseModalReturn<DataT, TypeT> = [
+  ModalState<DataT, TypeT>,
+  (params?: Omit<ModalState<DataT, TypeT>, "open">) => void,
   () => void
 ];
 
 /**
- * Custom React hook for managing modal state with optional data and type parameters.
+ * useModal
  *
- * @template DataT - The type of data to be passed to the modal (default: never).
- * @template TypeT - The type of modal (default: never).
- * @param {() => void} [reRender] - Optional callback function to trigger when the modal closes with a truthy value.
- * @returns {[ModalType<DataT, TypeT>, (params: Omit<ModalType<DataT, TypeT>, "open">) => void, (val?: boolean) => void]}
- *   Returns a tuple containing:
- *   - The current modal state object.
- *   - A function to open the modal with optional type and data.
- *   - A function to close the modal, optionally triggering the reRender callback.
+ * Custom React hook for managing modal state with optional type and data.
+ *
+ * @template DataT - Data passed to the modal
+ * @template TypeT - Modal type (defaults to common modal actions)
+ *
+ * @param onAfterClose Optional callback executed after modal is closed
+ *
+ * @returns [modalState, openModal, closeModal]
  *
  * @example
- * const [modal, openModal, closeModal] = useModal<MyDataType, MyModalType>();
- * openModal({ type: 'EDIT', data: { id: 1 } });
+ * const [modal, openModal, closeModal] = useModal<User, "EDIT" | "VIEW">();
+ *
+ * openModal({ type: "EDIT", data: user });
  * closeModal();
  */
-export default function useModal<DataT = never, TypeT = never>(
-  reRender?: () => void
-): ReturnType<DataT, TypeT> {
-  const [modal, setModal] = useState<ModalType<DataT, TypeT>>({
+export default function useModal<DataT = undefined, TypeT = DefaultModalType>(
+  onAfterClose?: () => void
+): UseModalReturn<DataT, TypeT> {
+  const [modal, setModal] = useState<ModalState<DataT, TypeT>>({
     open: false,
-    type: undefined,
-    data: undefined,
   });
 
-  const onOpen = ({
-    type = undefined,
-    data = undefined,
-  }: Omit<ModalType<DataT, TypeT>, "open">) => {
-    setModal({
-      open: true,
-      type,
-      data,
-    });
+  const openModal = (params: Omit<ModalState<DataT, TypeT>, "open"> = {}) => {
+    setModal({ open: true, ...params });
   };
 
-  const onClose = () => {
-    if (reRender) reRender();
-
-    setModal({
-      open: false,
-      type: undefined,
-      data: undefined,
-    });
+  const closeModal = () => {
+    onAfterClose?.();
+    setModal({ open: false });
   };
 
-  return [modal, onOpen, onClose];
+  return [modal, openModal, closeModal];
 }

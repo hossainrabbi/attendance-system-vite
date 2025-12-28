@@ -1,25 +1,30 @@
 import { cn } from "@/lib/utils";
 import { Skeleton, Table } from "antd";
-import type { AnyObject } from "antd/es/_util/type";
 import type { ColumnType, TableProps } from "antd/es/table";
-import React, { useState, type Key } from "react";
+import { useState, type Key } from "react";
 import type { ICustomPagination } from "./CustomPagination";
 import CPagination from "./CustomPagination";
 
-// Generic type for table data
+/* ======================================================
+   Types
+====================================================== */
+
 interface CustomTableProps<T> extends TableProps<T> {
   data: T[];
   columns: ColumnType<T>[];
   loading?: boolean;
   rowKey?: string | ((record: T) => string);
   selectable?: boolean;
-  onSelectionChange?: (selectedRowKeys: React.Key[], selectedRows: T[]) => void;
+  onSelectionChange?: (selectedRowKeys: Key[], selectedRows: T[]) => void;
   wrapperClassName?: string;
-  scroll?: { x?: string | number | true; y?: string | number };
   paginationProps?: ICustomPagination;
 }
 
-export default function CTable<T extends AnyObject>({
+/* ======================================================
+   Main Table Component
+====================================================== */
+
+export default function CTable<T>({
   data,
   columns,
   loading = false,
@@ -27,25 +32,25 @@ export default function CTable<T extends AnyObject>({
   onSelectionChange,
   rowKey = "id",
   wrapperClassName,
-  scroll,
   paginationProps,
+  scroll = { x: "max-content" },
   ...rest
 }: CustomTableProps<T>) {
-  const rowSelection = useRowSelection(selectable, onSelectionChange);
+  const rowSelection = useRowSelection(selectable, loading, onSelectionChange);
+
   const tableColumns = getTableColumns(columns, loading);
-  const tableData = getTableData(data, loading, rowKey);
 
   return (
     <div className={cn("bg-white rounded-lg shadow-sm", wrapperClassName)}>
       <Table<T>
-        columns={tableColumns}
-        dataSource={tableData}
+        {...rest}
         rowKey={rowKey}
-        rowSelection={loading ? undefined : rowSelection}
+        columns={tableColumns}
+        dataSource={data}
+        rowSelection={selectable && !loading ? rowSelection : undefined}
         loading={false}
         pagination={false}
-        scroll={scroll || { x: "max-content" }}
-        {...rest}
+        scroll={scroll}
       />
 
       {!!paginationProps && <CPagination {...paginationProps} />}
@@ -53,56 +58,44 @@ export default function CTable<T extends AnyObject>({
   );
 }
 
-// Row selection logic
+/* ======================================================
+   Row Selection Logic 
+====================================================== */
+
 function useRowSelection<T>(
   selectable: boolean,
-  onSelectionChange?: (selectedRowKeys: React.Key[], selectedRows: T[]) => void
+  loading: boolean,
+  onSelectionChange?: (keys: Key[], rows: T[]) => void
 ) {
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
 
-  const rowSelection = selectable
-    ? {
-        selectedRowKeys,
-        onChange: (keys: React.Key[], rows: T[]) => {
-          setSelectedRowKeys(keys);
-          onSelectionChange?.(keys, rows);
-        },
-      }
-    : undefined;
-
-  return rowSelection;
-}
-
-// Skeleton loading with table data
-function getTableData<T>(
-  data: T[],
-  loading: boolean,
-  rowKey: string | ((record: T) => string)
-): T[] {
-  if (loading) {
-    return Array.from({ length: 5 }, (_, index) => ({
-      key: `skeleton-${index}`,
-      id: `skeleton-${index}`,
-    })) as unknown as T[];
+  if (!selectable || loading) {
+    return undefined;
   }
 
-  return data.map((item, idx) => ({
-    ...item,
-    key: rowKey || idx,
-  }));
+  return {
+    selectedRowKeys,
+    onChange: (keys: Key[], rows: T[]) => {
+      setSelectedRowKeys(keys);
+      onSelectionChange?.(keys, rows);
+    },
+  };
 }
 
-// Skeleton loading with table columns
+/* ======================================================
+   Skeleton Column Renderer
+====================================================== */
+
 function getTableColumns<T>(
   columns: ColumnType<T>[],
   loading: boolean
 ): ColumnType<T>[] {
-  if (loading) {
-    return columns.map((col) => ({
-      ...col,
-      render: () => <Skeleton.Input active size="small" className="w-full" />,
-    }));
-  }
+  if (!loading) return columns;
 
-  return columns;
+  return columns.map((col) => ({
+    ...col,
+    render: () => (
+      <Skeleton.Input active size="small" className="w-full h-6!" />
+    ),
+  }));
 }

@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { selectSearchOption } from "@/utils/utils";
 import { Flex, Pagination, Select } from "antd";
+import { useMemo } from "react";
 
 export interface ICustomPagination {
   limit: number;
@@ -13,21 +14,27 @@ export interface ICustomPagination {
 export default function CPagination({
   limit,
   total,
-  page,
+  page = 1,
   wrapperClassName,
   onPagination,
 }: ICustomPagination) {
-  const selectOptions = [...Array(Math.ceil(total / limit))].map(
-    (_, index) => ({
-      label: `${index + 1}`,
-      value: `${index + 1}`,
-    })
+  const totalPages = Math.ceil(total / limit);
+
+  const selectOptions = useMemo(
+    () =>
+      Array.from({ length: totalPages }, (_, index) => ({
+        label: String(index + 1),
+        value: index + 1,
+      })),
+    [totalPages]
   );
 
-  const onSelect = (page: number) => {
-    if (onPagination) {
-      onPagination(page, limit);
-    }
+  const handleSelect = (selectedPage: number) => {
+    onPagination?.(selectedPage, limit);
+  };
+
+  const handlePaginationChange = (page: number) => {
+    onPagination?.(page, limit);
   };
 
   return (
@@ -40,19 +47,19 @@ export default function CPagination({
     >
       <Flex align="center" gap={10} className="text-sm font-semibold">
         <span>Page</span>
-        <span>
-          <Select
-            size="small"
-            value={page}
-            className="min-w-[52px]"
-            options={selectOptions}
-            onChange={onSelect}
-            showSearch={{
-              filterOption: selectSearchOption,
-            }}
-          />
-        </span>
-        <span>of {Math.ceil(total / limit)}</span>
+
+        <Select
+          size="small"
+          value={page}
+          className="min-w-[52px]"
+          options={selectOptions}
+          onChange={handleSelect}
+          showSearch={{
+            filterOption: selectSearchOption,
+          }}
+        />
+
+        <span>of {totalPages}</span>
       </Flex>
 
       {/* Ant Design Pagination */}
@@ -61,12 +68,7 @@ export default function CPagination({
         current={page}
         pageSize={limit}
         showSizeChanger={false}
-        onChange={onPagination}
-        //   itemRender={(_, type, __) => {
-        //     if (type === "prev") return <PrevPaginationIcon />;
-        //     if (type === "next") return <NextPaginationIcon />;
-        //     return __;
-        //   }}
+        onChange={handlePaginationChange}
       />
     </Flex>
   );
