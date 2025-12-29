@@ -1,6 +1,6 @@
 import { Drawer } from "antd";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";

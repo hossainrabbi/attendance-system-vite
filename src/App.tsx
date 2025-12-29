@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router";
 import { Fragment } from "react/jsx-runtime";
 import { ToastProvider } from "./contexts/ToastProvider";
 import { ProtectedRoute } from "./features/auth/ProtectedRoute";

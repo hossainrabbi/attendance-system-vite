@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/store";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router";
 import { selectUserRole, type UserRole } from "./authSlice";
 
 interface ProtectedRouteProps {

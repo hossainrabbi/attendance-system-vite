@@ -1,5 +1,5 @@
 import type { MenuItem } from "@/features/sidebar/menu";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import { MenuIcon } from "./MenuIcon";
 import { SubmenuPopover } from "./SubmenuPopover";
 

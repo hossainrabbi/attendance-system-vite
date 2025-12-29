@@ -1,7 +1,7 @@
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import { useMemo, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import { convertToAntdMenuItems } from "../_utils/menuConverter";
 import { findMenuKeysByPath, findPathByKey } from "../_utils/menuUtils";
 import type { MenuItem } from "../menu";
