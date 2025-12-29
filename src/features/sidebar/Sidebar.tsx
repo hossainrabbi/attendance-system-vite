@@ -1,6 +1,5 @@
 import { Layout } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { CollapsedMenu } from "./_components/CollapsedMenu";
 import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";
@@ -19,9 +18,9 @@ type Props = {
   menuItems: MenuItem[];
 };
 export const Sidebar = ({ menuItems }: Props) => {
-  const dispatch = useDispatch();
-  const isCollapsed = useSelector(
-    (state: RootState) => state.ui.isSidebarCollapsed
+  const dispatch = useAppDispatch();
+  const isCollapsed = useAppSelector(
+    (state) => state.sidebar.isSidebarCollapsed
   );
 
   const filteredMenuItems = useMenuFilter(menuItems);

@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/store/store";
 import { Navigate, Outlet } from "react-router-dom";
 import { selectUserRole, type UserRole } from "./authSlice";
 
@@ -11,7 +11,7 @@ export const ProtectedRoute = ({
   allowedRoles,
   children,
 }: ProtectedRouteProps) => {
-  const userRole = useSelector(selectUserRole);
+  const userRole = useAppSelector(selectUserRole);
 
   if (!userRole) {
     // If no user is logged in, redirect to login

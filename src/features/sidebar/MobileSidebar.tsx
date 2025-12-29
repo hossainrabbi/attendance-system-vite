@@ -1,8 +1,7 @@
 import { Drawer } from "antd";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import type { RootState } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";
 import { useMenuFilter } from "./_hooks/useMenuFilter";
@@ -14,9 +13,9 @@ interface Props {
 }
 
 export const MobileSidebar = ({ menuItems }: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
-  const isOpen = useSelector((state: RootState) => state.ui.isMobileMenuOpen);
+  const isOpen = useAppSelector((state) => state.sidebar.isMobileMenuOpen);
 
   const filteredMenuItems = useMenuFilter(menuItems);
 

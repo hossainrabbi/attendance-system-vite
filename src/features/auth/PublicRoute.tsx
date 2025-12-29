@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/store/store";
 import { Navigate, Outlet } from "react-router-dom";
 import { selectIsAuthenticated } from "./authSlice";
 
@@ -7,7 +7,7 @@ interface PublicRouteProps {
 }
 
 export const PublicRoute = ({ children }: PublicRouteProps) => {
-  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
   if (isAuthenticated) {
     // If user is logged in, redirect to dashboard

@@ -1,5 +1,5 @@
+import { useAppSelector } from "@/store/store";
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
 import { selectUserRole } from "../../auth/authSlice";
 import type { MenuItem } from "../menu";
 
@@ -8,7 +8,7 @@ import type { MenuItem } from "../menu";
  * Implements strict RBAC with role inheritance and bubble-up visibility.
  */
 export const useMenuFilter = (menuItems: MenuItem[]) => {
-  const userRole = useSelector(selectUserRole);
+  const userRole = useAppSelector(selectUserRole);
 
   return useMemo(() => {
     if (!userRole) return [];

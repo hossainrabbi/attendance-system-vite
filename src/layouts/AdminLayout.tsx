@@ -1,16 +1,16 @@
 import { menuItems } from "@/features/sidebar/menu";
 import { MobileSidebar } from "@/features/sidebar/MobileSidebar";
 import { toggleMobileMenu } from "@/features/sidebar/sidebar.slice";
+import { useAppDispatch } from "@/store/store";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Layout } from "antd";
-import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "../features/sidebar/Sidebar";
 
 const { Content, Header } = Layout;
 
 export const AdminLayout = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <Layout className="min-h-screen">

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { selectSearchOption } from "@/utils/utils";
+import { filterOptionByLabel } from "@/utils/utils";
 import { Flex, Pagination, Select } from "antd";
 import { useMemo } from "react";
 
@@ -55,7 +55,7 @@ export default function CPagination({
           options={selectOptions}
           onChange={handleSelect}
           showSearch={{
-            filterOption: selectSearchOption,
+            filterOption: filterOptionByLabel,
           }}
         />
 

@@ -1,11 +1,11 @@
+import { useAppDispatch } from "@/store/store";
 import { Button, Form, Input, Typography } from "antd";
-import { useDispatch } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
 
 const { Title, Text } = Typography;
 
 export const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleLogin = (values: any) => {
