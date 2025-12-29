@@ -1,4 +1,4 @@
-import { useConfirm } from "@/features/modal/_hooks/useConfirm";
+import useConfirm from "@/features/modal/_hooks/useConfirm";
 import { Toast } from "@/lib/toast";
 import { Button } from "antd";
 

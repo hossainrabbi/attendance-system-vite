@@ -7,7 +7,7 @@ import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";
 import { useMenuFilter } from "./_hooks/useMenuFilter";
 import type { MenuItem } from "./menu";
-import { setMobileMenuOpen } from "./uiSlice";
+import { setMobileMenuOpen } from "./sidebar.slice";
 
 interface Props {
   menuItems: MenuItem[];

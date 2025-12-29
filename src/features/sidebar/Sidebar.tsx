@@ -7,7 +7,7 @@ import { SidebarHeader } from "./_components/SidebarHeader";
 import { SidebarToggle } from "./_components/SidebarToggle";
 import { useMenuFilter } from "./_hooks/useMenuFilter";
 import type { MenuItem } from "./menu";
-import { toggleSidebar } from "./uiSlice";
+import { toggleSidebar } from "./sidebar.slice";
 
 const { Sider } = Layout;
 

@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { Button, Modal, Typography } from "antd";
-import { closeConfirm } from "./confirmSlice";
+import { closeConfirm } from "./confirm.slice";
 
 const { Paragraph, Text } = Typography;
 

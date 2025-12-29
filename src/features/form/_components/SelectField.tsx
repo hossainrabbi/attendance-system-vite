@@ -1,6 +1,6 @@
 import { Form, Select } from "antd";
 import type { DefaultOptionType, SelectProps } from "antd/es/select";
-import type { BaseFieldProps } from "../formType";
+import type { BaseFieldProps } from "../form.type";
 
 interface SelectFieldProps<T = Record<string, unknown>, V = unknown>
   extends BaseFieldProps<T>,

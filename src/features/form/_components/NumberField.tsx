@@ -1,6 +1,6 @@
 import { Form, InputNumber } from "antd";
 import type { InputNumberProps } from "antd/es/input-number";
-import type { BaseFieldProps } from "../formType";
+import type { BaseFieldProps } from "../form.type";
 
 interface NumberFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T>,

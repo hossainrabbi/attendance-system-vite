@@ -1,7 +1,7 @@
 import { Checkbox, Form } from "antd";
 import type { CheckboxProps } from "antd/es/checkbox";
 import React from "react";
-import type { BaseFieldProps } from "../formType";
+import type { BaseFieldProps } from "../form.type";
 
 interface CheckboxFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T>,

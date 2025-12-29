@@ -1,14 +1,14 @@
-import { useDispatch } from "react-redux";
-import type { ConfirmPayload } from "../confirmSlice";
-import { openConfirm } from "../confirmSlice";
+import { useAppDispatch } from "@/store/store";
+import type { ConfirmPayload } from "../confirm.slice";
+import { openConfirm } from "../confirm.slice";
 
 /**
  * useConfirm
  *
  * Global confirmation dialog hook (Promise-based).
  */
-export function useConfirm() {
-  const dispatch = useDispatch();
+export default function useConfirm() {
+  const dispatch = useAppDispatch();
 
   return (options: Omit<ConfirmPayload, "resolve" | "reject">) =>
     new Promise<void>((resolve, reject) => {

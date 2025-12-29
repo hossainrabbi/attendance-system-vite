@@ -1,6 +1,6 @@
 import { Form, Radio } from "antd";
 import type { RadioGroupProps } from "antd/es/radio";
-import type { BaseFieldProps } from "../formType";
+import type { BaseFieldProps } from "../form.type";
 
 interface RadioFieldProps<T = Record<string, unknown>, V = unknown>
   extends BaseFieldProps<T>,

@@ -1,6 +1,6 @@
 import { Form, Switch } from "antd";
 import type { SwitchProps } from "antd/es/switch";
-import type { BaseFieldProps } from "../formType";
+import type { BaseFieldProps } from "../form.type";
 
 interface SwitchFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T>,

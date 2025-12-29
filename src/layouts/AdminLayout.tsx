@@ -1,6 +1,6 @@
 import { menuItems } from "@/features/sidebar/menu";
 import { MobileSidebar } from "@/features/sidebar/MobileSidebar";
-import { toggleMobileMenu } from "@/features/sidebar/uiSlice";
+import { toggleMobileMenu } from "@/features/sidebar/sidebar.slice";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Layout } from "antd";
 import { useDispatch } from "react-redux";
