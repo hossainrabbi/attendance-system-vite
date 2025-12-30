@@ -1,4 +1,5 @@
-import { Form, Select } from "antd";
+import CSelect from "@/components/ui/form/CustomSelect";
+import { Form } from "antd";
 import type { DefaultOptionType, SelectProps } from "antd/es/select";
 import type { BaseFieldProps } from "../form.type";
 
@@ -34,7 +35,7 @@ export default function SelectField<T = Record<string, unknown>, V = unknown>({
       dependencies={dependencies as string[]}
       hidden={hidden}
     >
-      <Select<V> {...props} options={options as DefaultOptionType[]} />
+      <CSelect<V> {...props} options={options as DefaultOptionType[]} />
     </Form.Item>
   );
 }

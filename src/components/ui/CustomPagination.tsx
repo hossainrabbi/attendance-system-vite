@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import { filterOptionByLabel } from "@/utils/utils";
-import { Flex, Pagination, Select } from "antd";
+import { Flex, Pagination } from "antd";
 import { useMemo } from "react";
+import CSelect from "./form/CustomSelect";
 
 export interface ICustomPagination {
   limit: number;
@@ -48,15 +48,12 @@ export default function CPagination({
       <Flex align="center" gap={10} className="text-sm font-semibold">
         <span>Page</span>
 
-        <Select
+        <CSelect
           size="small"
           value={page}
           className="min-w-[52px]"
           options={selectOptions}
           onChange={handleSelect}
-          showSearch={{
-            filterOption: filterOptionByLabel,
-          }}
         />
 
         <span>of {totalPages}</span>

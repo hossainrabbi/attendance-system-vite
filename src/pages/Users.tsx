@@ -73,15 +73,11 @@ export default function Users() {
         placeholder="Select role"
       />
 
-      <CForm.Date<IUser>
-        name="birthDate"
-        label="Birth Date"
-        placeholder="Select date"
-      />
+      <CForm.Date<IUser> name="birthDate" label="Birth Date" />
 
       <CForm.Switch<IUser> name="isActive" label="Active Status" />
 
-      <CForm.Checkbox<IUser> name="newsletter" label="Newsletter">
+      <CForm.Checkbox<IUser> name="newsletter">
         Subscribe to newsletter
       </CForm.Checkbox>
 

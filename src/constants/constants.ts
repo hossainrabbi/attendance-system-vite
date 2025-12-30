@@ -2,6 +2,7 @@
 export const PLACEHOLDER_FORMATS = {
   MOBILE: "+8801xxxxxxxxx",
   EMAIL: "example@gmail.com",
+  DATE: "dd/mm/yyyy",
 } as const;
 
 // Date formats

@@ -1,22 +1,4 @@
 /**
- * Filters a Select option by checking whether its label
- * includes the search input (case-insensitive).
- *
- * Commonly used as `filterOption` in searchable Select components
- * (e.g., Ant Design Select).
- *
- * @param input - The search text entered by the user
- * @param option - The select option containing label and value
- * @returns true if the option label matches the input, otherwise false
- */
-export const filterOptionByLabel = (
-  input: string,
-  option?: { label: string; value: string | number | boolean }
-): boolean => {
-  return (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
-};
-
-/**
  * Normalizes a phone number to ensure it starts with the country code `+88`.
  *
  * Rules:

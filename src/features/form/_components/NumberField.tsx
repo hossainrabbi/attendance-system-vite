@@ -1,4 +1,5 @@
-import { Form, InputNumber } from "antd";
+import CNumberInput from "@/components/ui/form/CustomNumberInput";
+import { Form } from "antd";
 import type { InputNumberProps } from "antd/es/input-number";
 import type { BaseFieldProps } from "../form.type";
 
@@ -26,7 +27,7 @@ export default function NumberField<T = Record<string, unknown>>({
       dependencies={dependencies as string[]}
       hidden={hidden}
     >
-      <InputNumber {...props} style={{ width: "100%" }} />
+      <CNumberInput {...props} />
     </Form.Item>
   );
 }
