@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import type { UserRole } from "./features/auth/authSlice";
+import Courses from "./pages/Courses";
 import { Dashboard } from "./pages/Dashboard";
 import { Employees } from "./pages/Employees";
 import { GeneralSettings } from "./pages/GeneralSettings";
@@ -25,11 +26,21 @@ export const routes: AppRoute[] = [
     element: <Login />,
     layout: "auth",
   },
-  // Admin Routes
   {
     path: "/",
-    element: <Dashboard />,
+    element: "Hello",
     index: true,
+    layout: "admin",
+  },
+  // Admin Routes
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    layout: "admin",
+  },
+  {
+    path: "courses",
+    element: <Courses />,
     layout: "admin",
   },
   {

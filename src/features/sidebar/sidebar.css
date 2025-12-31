@@ -1,0 +1,22 @@
+@import "@/styles/index.css";
+
+.custom-sidebar {
+  .ant-menu {
+    @apply px-4;
+  }
+
+  .ant-menu-item,
+  .ant-menu-submenu > .ant-menu-submenu-title {
+    @apply h-11 px-3.5! rounded-lg space-x-2;
+  }
+
+  .ant-menu-submenu {
+    .ant-menu-item {
+      @apply pl-[25px]!;
+    }
+  }
+
+  .ant-popover-container {
+    @apply rounded-lg;
+  }
+}

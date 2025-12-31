@@ -3,9 +3,9 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import { CollapsedMenu } from "./_components/CollapsedMenu";
 import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";
-import { SidebarToggle } from "./_components/SidebarToggle";
 import { useMenuFilter } from "./_hooks/useMenuFilter";
 import type { MenuItem } from "./menu";
+import "./sidebar.css";
 import { toggleSidebar } from "./sidebar.slice";
 
 const { Sider } = Layout;
@@ -36,10 +36,10 @@ export const Sidebar = ({ menuItems }: Props) => {
       onCollapse={handleToggle}
       trigger={null}
       width={250}
-      className="hidden md:block min-h-screen shadow-lg"
+      className="hidden md:block min-h-screen shadow-lg custom-sidebar"
       theme="light"
     >
-      <SidebarHeader isCollapsed={isCollapsed} />
+      <SidebarHeader isCollapsed={isCollapsed} onToggle={handleToggle} />
 
       {/* Menu - Conditional rendering based on collapse state */}
       {isCollapsed ? (
@@ -47,8 +47,6 @@ export const Sidebar = ({ menuItems }: Props) => {
       ) : (
         <ExpandedMenu menuItems={filteredMenuItems} />
       )}
-
-      <SidebarToggle isCollapsed={isCollapsed} onToggle={handleToggle} />
     </Sider>
   );
 };

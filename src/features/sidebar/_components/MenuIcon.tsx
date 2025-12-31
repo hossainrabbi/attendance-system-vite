@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+import { Flex } from "antd";
 import { forwardRef } from "react";
 import { useLocation } from "react-router";
 import type { MenuItem } from "../menu";
@@ -13,28 +15,27 @@ interface MenuIconProps extends React.HTMLAttributes<HTMLDivElement> {
  * Handles active state styling
  */
 export const MenuIcon = forwardRef<HTMLDivElement, MenuIconProps>(
-  ({ item, onClick, hasActiveChild, ...props }, ref) => {
+  ({ item, onClick, hasActiveChild, className, ...props }, ref) => {
     const location = useLocation();
     const isActive = item.path === location.pathname;
 
     return (
-      <div
+      <Flex
+        justify="center"
+        align="center"
         ref={ref}
         onClick={onClick}
         {...props}
-        className={`
-          flex items-center justify-center h-12 cursor-pointer
-          transition-colors duration-200
-          ${
-            isActive || hasActiveChild
-              ? "bg-primary/10 text-primary"
-              : "hover:bg-gray-100"
-          }
-          ${props.className || ""}
-        `}
+        className={cn(
+          "h-11 w-12 rounded-md cursor-pointer transition-colors duration-200",
+          isActive || hasActiveChild
+            ? "bg-primary text-white"
+            : "hover:bg-light text-header",
+          className
+        )}
       >
         <span className="text-lg">{item.icon}</span>
-      </div>
+      </Flex>
     );
   }
 );

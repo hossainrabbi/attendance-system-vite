@@ -1,3 +1,4 @@
+import { Flex } from "antd";
 import { type MenuItem } from "../menu";
 import { CollapsedMenuItem } from "./CollapsedMenuItem";
 
@@ -11,10 +12,10 @@ type Props = {
 
 export const CollapsedMenu = ({ menuItems }: Props) => {
   return (
-    <div className="flex flex-col">
+    <Flex justify="center" align="center" gap={4} className="flex-col">
       {menuItems.map((item) => (
         <CollapsedMenuItem key={item.key} item={item} />
       ))}
-    </div>
+    </Flex>
   );
 };

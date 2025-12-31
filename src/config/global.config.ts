@@ -11,3 +11,9 @@ export const REGEX = {
     /^(?![-_.])[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\.)+[a-zA-Z]{2,10}$/,
   USER_ID: /^(?!.*[._-]{2})[a-zA-Z0-9]+([._-]?[a-zA-Z0-9])*$/,
 };
+
+// Images
+export const IMAGES = {
+  LOGO: "/assets/images/logo.png",
+  LOGO_SM: "/assets/images/logo-sm.png",
+};

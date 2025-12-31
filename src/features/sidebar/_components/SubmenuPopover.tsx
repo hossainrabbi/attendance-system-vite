@@ -21,7 +21,9 @@ export const SubmenuPopover = ({ item, children }: SubmenuPopoverProps) => {
       content={<SubmenuContent items={item.children} />}
       placement="rightTop"
       trigger="hover"
-      overlayClassName="sidebar-submenu-popover"
+      classNames={{
+        root: "custom-sidebar",
+      }}
       mouseEnterDelay={0.1}
       mouseLeaveDelay={0.1}
     >

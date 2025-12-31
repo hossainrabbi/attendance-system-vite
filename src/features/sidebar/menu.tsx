@@ -1,12 +1,9 @@
-import {
-  DashboardOutlined,
-  SafetyCertificateOutlined,
-  SettingOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
 import React from "react";
 import type { UserRole } from "../auth/authSlice";
+import CourseIcon from "./_icons/CourseIcon";
+import DashboardIcon from "./_icons/DashboardIcon";
+import SettingIcon from "./_icons/SettingIcon";
+import UserIcon from "./_icons/UserIcon";
 
 export interface MenuItem {
   key: string;
@@ -21,14 +18,21 @@ export const menuItems: MenuItem[] = [
   {
     key: "dashboard",
     label: "Dashboard",
-    icon: <DashboardOutlined />,
-    path: "/",
+    icon: <DashboardIcon />,
+    path: "/dashboard",
+    roles: ["ADMIN"],
+  },
+  {
+    key: "courses",
+    label: "Courses",
+    icon: <CourseIcon />,
+    path: "/courses",
     roles: ["ADMIN"],
   },
   {
     key: "users",
     label: "User Management",
-    icon: <UserOutlined />,
+    icon: <UserIcon />,
     children: [
       {
         key: "users-list",
@@ -45,15 +49,9 @@ export const menuItems: MenuItem[] = [
     ],
   },
   {
-    key: "employees",
-    label: "Employees",
-    icon: <TeamOutlined />,
-    path: "/employees",
-  },
-  {
     key: "settings",
     label: "Settings",
-    icon: <SettingOutlined />,
+    icon: <SettingIcon />,
     children: [
       {
         key: "settings-general",
@@ -64,7 +62,6 @@ export const menuItems: MenuItem[] = [
       {
         key: "settings-security",
         label: "Security",
-        icon: <SafetyCertificateOutlined />,
         path: "/settings/security",
         roles: ["ADMIN"],
       },

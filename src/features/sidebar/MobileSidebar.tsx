@@ -35,9 +35,12 @@ export const MobileSidebar = ({ menuItems }: Props) => {
       open={isOpen}
       size={250}
       styles={{ body: { padding: 0 } }}
-      title={<SidebarHeader isCollapsed={false} />}
-      closeIcon={null} // Optional: hide default close icon if you want a custom header
-      className="md:hidden" // Ensure it's only relevant for mobile if logic leaks
+      title={<SidebarHeader isCollapsed={false} isMobile={true} />}
+      closeIcon={null}
+      className="md:hidden custom-sidebar"
+      classNames={{
+        header: "p-0 border-none",
+      }}
     >
       <ExpandedMenu menuItems={filteredMenuItems} />
     </Drawer>

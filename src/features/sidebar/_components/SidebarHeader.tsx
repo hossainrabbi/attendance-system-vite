@@ -1,17 +1,52 @@
+import LeftDoubleIcon from "@/assets/icons/LeftDoubleIcon";
+import RightDoubleIcon from "@/assets/icons/RightDoubleIcon";
+import { IMAGES } from "@/config/global.config";
+import { cn } from "@/lib/utils";
+import { Button, Flex } from "antd";
+
 interface SidebarHeaderProps {
   isCollapsed: boolean;
+  onToggle?: () => void;
+  isMobile?: boolean;
 }
 
 /**
  * Sidebar header component
  * Shows full title or abbreviated version based on collapse state
  */
-export const SidebarHeader = ({ isCollapsed }: SidebarHeaderProps) => {
+export const SidebarHeader = ({
+  isCollapsed,
+  isMobile,
+  onToggle,
+}: SidebarHeaderProps) => {
   return (
-    <div className="flex h-16 items-center justify-center border-b border-gray-200">
-      <h1 className="text-xl font-bold text-primary">
-        {isCollapsed ? "AS" : "Attendance System"}
-      </h1>
-    </div>
+    <Flex
+      align="center"
+      justify={isCollapsed ? "center" : "start"}
+      className="h-16 px-4"
+    >
+      <img
+        src={isCollapsed ? IMAGES.LOGO_SM : IMAGES.LOGO}
+        alt="Logo"
+        className={cn("object-contain", isCollapsed ? "h-14" : "h-12")}
+      />
+      <Button
+        size="small"
+        type="default"
+        shape="circle"
+        icon={
+          isCollapsed ? (
+            <RightDoubleIcon className="mt-1" />
+          ) : (
+            <LeftDoubleIcon className="mt-1" />
+          )
+        }
+        className={cn(
+          "ml-auto absolute -right-3 top-10 border-transparent shadow-sm",
+          isMobile && "hidden"
+        )}
+        onClick={onToggle}
+      />
+    </Flex>
   );
 };

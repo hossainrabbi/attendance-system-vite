@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+import { Flex } from "antd";
 import { useLocation, useNavigate } from "react-router";
 import type { MenuItem } from "../menu";
 
@@ -17,22 +19,23 @@ export const SubmenuContent = ({ items }: SubmenuContentProps) => {
   };
 
   return (
-    <div className="py-2 min-w-[160px]">
+    <div className="min-w-[160px] space-y-1">
       {items.map((child) => {
         const isActive = child.path === location.pathname;
         return (
-          <div
+          <Flex
+            align="center"
+            gap={12}
             key={child.key}
             onClick={() => child.path && handleClick(child.path)}
-            className={`
-              px-4 py-2 cursor-pointer transition-colors duration-200
-              flex items-center gap-3
-              ${isActive ? "bg-primary/10 text-primary" : "hover:bg-gray-100"}
-            `}
+            className={cn(
+              "px-4 py-2 h-10 cursor-pointer transition-colors duration-200 rounded-md",
+              isActive ? "bg-primary text-white" : "hover:bg-light text-header"
+            )}
           >
             {child.icon && <span className="text-base">{child.icon}</span>}
             <span className="text-sm">{child.label}</span>
-          </div>
+          </Flex>
         );
       })}
     </div>
