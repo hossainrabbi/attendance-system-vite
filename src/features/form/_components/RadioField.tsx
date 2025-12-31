@@ -28,6 +28,7 @@ export default function RadioField<T = Record<string, unknown>, V = unknown>({
       tooltip={tooltip}
       dependencies={dependencies as string[]}
       hidden={hidden}
+      validateFirst
     >
       <Radio.Group {...props} options={options} />
     </Form.Item>

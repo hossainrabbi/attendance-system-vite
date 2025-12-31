@@ -35,6 +35,7 @@ export default function CustomField<T = Record<string, unknown>>({
       valuePropName={valuePropName}
       trigger={trigger}
       getValueFromEvent={getValueFromEvent}
+      validateFirst
     >
       {children}
     </Form.Item>

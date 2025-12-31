@@ -5,6 +5,7 @@ import CheckboxField from "./_components/CheckboxField";
 import CustomField from "./_components/CustomField";
 import DateField from "./_components/DateField";
 import NumberField from "./_components/NumberField";
+import PasswordField from "./_components/PasswordField";
 import RadioField from "./_components/RadioField";
 import SelectField from "./_components/SelectField";
 import SwitchField from "./_components/SwitchField";
@@ -47,6 +48,7 @@ function TypedForm<T extends object>({
 
 export const CForm = Object.assign(TypedForm, {
   Text: TextField,
+  Password: PasswordField,
   Number: NumberField,
   Select: SelectField,
   Date: DateField,

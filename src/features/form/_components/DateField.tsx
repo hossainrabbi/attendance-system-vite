@@ -31,6 +31,7 @@ export default function DateField<T = Record<string, unknown>>({
       tooltip={tooltip}
       dependencies={dependencies as string[]}
       hidden={hidden}
+      validateFirst
     >
       <CDatePicker {...props} submittedFormat={submittedFormat} />
     </Form.Item>

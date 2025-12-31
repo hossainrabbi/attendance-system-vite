@@ -26,6 +26,7 @@ export default function SwitchField<T = Record<string, unknown>>({
       dependencies={dependencies as string[]}
       hidden={hidden}
       valuePropName="checked"
+      validateFirst
     >
       <Switch {...props} />
     </Form.Item>

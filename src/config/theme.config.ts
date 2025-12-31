@@ -42,6 +42,31 @@ export const getThemeConfig = (): ThemeConfig => {
         boxShadowSecondary:
           "0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
       },
+      /* Form Customization */
+      Form: {
+        itemMarginBottom: 6,
+        labelRequiredMarkColor: $css("--color-error"),
+        labelFontSize: 14,
+        labelColor: $css("--color-header"),
+        verticalLabelPadding: 0,
+      },
+
+      /* Input Customization */
+      Input: {
+        controlHeightLG: 44,
+        borderRadius: 6,
+        paddingBlock: 10,
+        paddingInline: 12,
+        fontSize: 14,
+      },
+      /* Button Customization */
+      Button: {
+        controlHeightLG: 44,
+        borderRadius: 6,
+        paddingBlock: 10,
+        paddingInline: 16,
+        fontSize: 14,
+      },
     },
   };
 };

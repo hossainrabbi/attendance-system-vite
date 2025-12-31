@@ -7,7 +7,7 @@ import { GeneralSettings } from "./pages/GeneralSettings";
 import { Roles } from "./pages/Roles";
 import { SecuritySettings } from "./pages/SecuritySettings";
 import Users from "./pages/Users";
-import Login from "./pages/auth/Login";
+import Login from "./pages/auth/Signin";
 
 export interface AppRoute {
   path: string;

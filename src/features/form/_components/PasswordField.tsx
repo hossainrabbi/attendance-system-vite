@@ -1,12 +1,12 @@
 import { Form, Input } from "antd";
-import type { InputProps } from "antd/es/input";
+import type { PasswordProps } from "antd/es/input";
 import type { BaseFieldProps } from "../form.type";
 
-interface TextFieldProps<T = Record<string, unknown>>
+interface PasswordFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T>,
-    Omit<InputProps, "name"> {}
+    Omit<PasswordProps, "name"> {}
 
-export default function TextField<T = Record<string, unknown>>({
+export default function PasswordField<T = Record<string, unknown>>({
   name,
   label,
   rules,
@@ -15,7 +15,7 @@ export default function TextField<T = Record<string, unknown>>({
   dependencies,
   hidden,
   ...props
-}: TextFieldProps<T>) {
+}: PasswordFieldProps<T>) {
   return (
     <Form.Item
       name={name as string | string[]}
@@ -27,7 +27,7 @@ export default function TextField<T = Record<string, unknown>>({
       hidden={hidden}
       validateFirst
     >
-      <Input {...props} />
+      <Input.Password {...props} />
     </Form.Item>
   );
 }

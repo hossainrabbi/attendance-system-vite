@@ -30,6 +30,7 @@ export default function CheckboxField<T = Record<string, unknown>>({
       dependencies={dependencies as string[]}
       hidden={hidden}
       valuePropName="checked"
+      validateFirst
     >
       <Checkbox {...props}>{children}</Checkbox>
     </Form.Item>

@@ -34,6 +34,7 @@ export default function SelectField<T = Record<string, unknown>, V = unknown>({
       tooltip={tooltip}
       dependencies={dependencies as string[]}
       hidden={hidden}
+      validateFirst
     >
       <CSelect<V> {...props} options={options as DefaultOptionType[]} />
     </Form.Item>

@@ -26,6 +26,7 @@ export default function NumberField<T = Record<string, unknown>>({
       tooltip={tooltip}
       dependencies={dependencies as string[]}
       hidden={hidden}
+      validateFirst
     >
       <CNumberInput {...props} />
     </Form.Item>
