@@ -6,7 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router";
 import { store } from "./app/store";
-import { getThemeConfig } from "./config/theme.config";
+import { getThemeConfig } from "./config/themeConfig";
 import { router } from "./router";
 import "./styles/index.css";
 

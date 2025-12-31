@@ -1,13 +1,10 @@
 import { cn } from "@/lib/utils";
 import { Skeleton, Table } from "antd";
 import type { ColumnType, TableProps } from "antd/es/table";
-import { useState, type Key } from "react";
+import { type Key } from "react";
 import type { ICustomPagination } from "./CustomPagination";
 import CPagination from "./CustomPagination";
-
-/* ======================================================
-   Types
-====================================================== */
+import { useRowSelection } from "./_hooks/useRowSelection";
 
 interface CustomTableProps<T> extends TableProps<T> {
   data: T[];
@@ -19,10 +16,6 @@ interface CustomTableProps<T> extends TableProps<T> {
   wrapperClassName?: string;
   paginationProps?: ICustomPagination;
 }
-
-/* ======================================================
-   Main Table Component
-====================================================== */
 
 export default function CTable<T>({
   data,
@@ -58,34 +51,7 @@ export default function CTable<T>({
   );
 }
 
-/* ======================================================
-   Row Selection Logic 
-====================================================== */
-
-function useRowSelection<T>(
-  selectable: boolean,
-  loading: boolean,
-  onSelectionChange?: (keys: Key[], rows: T[]) => void
-) {
-  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
-
-  if (!selectable || loading) {
-    return undefined;
-  }
-
-  return {
-    selectedRowKeys,
-    onChange: (keys: Key[], rows: T[]) => {
-      setSelectedRowKeys(keys);
-      onSelectionChange?.(keys, rows);
-    },
-  };
-}
-
-/* ======================================================
-   Skeleton Column Renderer
-====================================================== */
-
+//  Skeleton Column Renderer
 function getTableColumns<T>(
   columns: ColumnType<T>[],
   loading: boolean

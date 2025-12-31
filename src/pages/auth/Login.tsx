@@ -1,4 +1,4 @@
-import { ENV, IMAGES } from "@/config/global.config";
+import { ENV, IMAGES } from "@/config/globalConfig";
 import { Flex } from "antd";
 import LoginForm from "./_components/LoginForm";
 

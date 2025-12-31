@@ -1,4 +1,4 @@
-import CTable from "@/components/ui/CustomTable";
+import CTable from "@/features/table/CustomTable";
 import useTable from "@/hooks/useTable";
 import type { ColumnType } from "antd/es/table";
 import { useState } from "react";

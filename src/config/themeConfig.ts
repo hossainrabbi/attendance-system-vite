@@ -51,14 +51,30 @@ export const getThemeConfig = (): ThemeConfig => {
         verticalLabelPadding: 0,
       },
 
-      /* Input Customization */
       Input: {
         controlHeightLG: 44,
         borderRadius: 6,
-        paddingBlock: 10,
-        paddingInline: 12,
         fontSize: 14,
       },
+
+      Select: {
+        controlHeightLG: 44,
+        borderRadius: 6,
+        fontSize: 14,
+      },
+
+      DatePicker: {
+        controlHeightLG: 44,
+        borderRadius: 6,
+        fontSize: 14,
+      },
+
+      InputNumber: {
+        controlHeightLG: 44,
+        borderRadius: 6,
+        fontSize: 14,
+      },
+
       /* Button Customization */
       Button: {
         controlHeightLG: 44,
@@ -66,6 +82,12 @@ export const getThemeConfig = (): ThemeConfig => {
         paddingBlock: 10,
         paddingInline: 16,
         fontSize: 14,
+      },
+
+      // Table Customization
+      Table: {
+        headerSplitColor: "transparent",
+        headerBg: "#ffffff",
       },
     },
   };

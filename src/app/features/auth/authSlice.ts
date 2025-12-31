@@ -15,13 +15,13 @@ interface AuthState {
 
 // Mock initial user for development
 const initialState: AuthState = {
-  user: null,
-  // user: {
-  //   id: "1",
-  //   name: "Admin User",
-  //   email: "admin@example.com",
-  //   role: "ADMIN",
-  // },
+  // user: null,
+  user: {
+    id: "1",
+    name: "Admin User",
+    email: "admin@example.com",
+    role: "ADMIN",
+  },
 };
 
 export const authSlice = createSlice({

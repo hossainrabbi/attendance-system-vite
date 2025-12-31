@@ -1,4 +1,6 @@
-export default function RightDoubleIcon(props: React.SVGProps<SVGSVGElement>) {
+export default function RightDoubleArrowIcon(
+  props: React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       width={16}

@@ -1,9 +1,12 @@
+import LeftDoubleArrowIcon from "@/assets/icons/LeftDoubleArrowIcon";
+import RightDoubleArrowIcon from "@/assets/icons/RightDoubleArrowIcon";
 import { cn } from "@/lib/utils";
-import { Flex, Pagination } from "antd";
+import { Flex, Pagination, type PaginationProps } from "antd";
 import { useMemo } from "react";
-import CSelect from "./form/CustomSelect";
+import CSelect from "../../components/ui/form/CustomSelect";
+import "./pagination.css";
 
-export interface ICustomPagination {
+export interface ICustomPagination extends PaginationProps {
   limit: number;
   total: number;
   page?: number;
@@ -17,6 +20,7 @@ export default function CPagination({
   page = 1,
   wrapperClassName,
   onPagination,
+  className,
 }: ICustomPagination) {
   const totalPages = Math.ceil(total / limit);
 
@@ -33,7 +37,7 @@ export default function CPagination({
     onPagination?.(selectedPage, limit);
   };
 
-  const handlePaginationChange = (page: number) => {
+  const handlePagination = (page: number) => {
     onPagination?.(page, limit);
   };
 
@@ -45,15 +49,16 @@ export default function CPagination({
       justify="space-between"
       className={cn("px-4 py-2.5", wrapperClassName)}
     >
-      <Flex align="center" gap={10} className="text-sm font-semibold">
+      <Flex align="center" gap={10} className="text-sm font-semibold text-text">
         <span>Page</span>
 
         <CSelect
-          size="small"
+          size="middle"
           value={page}
           className="min-w-[52px]"
           options={selectOptions}
           onChange={handleSelect}
+          allowClear={false}
         />
 
         <span>of {totalPages}</span>
@@ -65,7 +70,18 @@ export default function CPagination({
         current={page}
         pageSize={limit}
         showSizeChanger={false}
-        onChange={handlePaginationChange}
+        onChange={handlePagination}
+        className={cn("custom-pagination", className)}
+        itemRender={(_, type, el) => {
+          switch (type) {
+            case "prev":
+              return <LeftDoubleArrowIcon className="-mt-px" />;
+            case "next":
+              return <RightDoubleArrowIcon className="-mt-px" />;
+            default:
+              return el;
+          }
+        }}
       />
     </Flex>
   );

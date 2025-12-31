@@ -1,6 +1,6 @@
-import LeftDoubleIcon from "@/assets/icons/LeftDoubleIcon";
-import RightDoubleIcon from "@/assets/icons/RightDoubleIcon";
-import { IMAGES } from "@/config/global.config";
+import LeftDoubleArrowIcon from "@/assets/icons/LeftDoubleArrowIcon";
+import RightDoubleArrowIcon from "@/assets/icons/RightDoubleArrowIcon";
+import { IMAGES } from "@/config/globalConfig";
 import { cn } from "@/lib/utils";
 import { Button, Flex } from "antd";
 
@@ -36,9 +36,9 @@ export const SidebarHeader = ({
         shape="circle"
         icon={
           isCollapsed ? (
-            <RightDoubleIcon className="mt-1" />
+            <RightDoubleArrowIcon className="mt-1" />
           ) : (
-            <LeftDoubleIcon className="mt-1" />
+            <LeftDoubleArrowIcon className="mt-1" />
           )
         }
         className={cn(

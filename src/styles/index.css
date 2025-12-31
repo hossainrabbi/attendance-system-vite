@@ -10,6 +10,7 @@
   --color-warning: #f59e0b;
   --color-info: #0ea5e9;
   --color-light: #f0f0f0;
+  --color-border: #d7dfe9;
 
   /* Fonts Colors */
   --color-header: #2d3643;
@@ -17,12 +18,4 @@
 
   /* Fonts */
   --font-primary: "Roboto", sans-serif;
-}
-
-@utility container {
-  @apply mx-auto px-4;
-
-  @media (width >= --theme-screens-xl) {
-    @apply px-6;
-  }
 }

@@ -1,0 +1,40 @@
+@import "@/styles/index.css";
+
+.custom-pagination {
+  @apply flex justify-center;
+
+  /* All buttons */
+  .ant-pagination-item,
+  .ant-pagination-prev,
+  .ant-pagination-next,
+  .ant-pagination-jump-prev,
+  .ant-pagination-jump-next {
+    @apply h-9 w-9 rounded-md border border-border! 
+         flex items-center justify-center 
+         text-sm font-medium 
+         transition-all hover:bg-light;
+  }
+
+  /* Page numbers */
+  .ant-pagination-item a {
+    @apply text-text;
+  }
+
+  /* Active page */
+  .ant-pagination-item-active {
+    @apply bg-primary border-primary!;
+  }
+
+  .ant-pagination-item-active a {
+    @apply text-white;
+  }
+
+  /* Disabled arrows */
+  .ant-pagination-disabled {
+    @apply opacity-60 cursor-not-allowed bg-transparent!;
+  }
+
+  .ant-pagination-item-ellipsis {
+    @apply top-[45%] left-[10%] -translate-2/4 text-xs!;
+  }
+}

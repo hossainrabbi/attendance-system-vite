@@ -1,4 +1,4 @@
-import { ENV } from "@/config/global.config";
+import { ENV } from "@/config/globalConfig";
 import { Helmet } from "react-helmet-async";
 
 export interface SeoProps {
