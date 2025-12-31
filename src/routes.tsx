@@ -4,72 +4,67 @@ import Courses from "./pages/Courses";
 import { Dashboard } from "./pages/Dashboard";
 import { Employees } from "./pages/Employees";
 import { GeneralSettings } from "./pages/GeneralSettings";
-import { Login } from "./pages/Login";
 import { Roles } from "./pages/Roles";
 import { SecuritySettings } from "./pages/SecuritySettings";
 import Users from "./pages/Users";
-
-export type RouteLayout = "admin" | "auth";
+import Login from "./pages/auth/Login";
 
 export interface AppRoute {
   path: string;
   element: ReactNode;
-  roles?: UserRole[]; // Optional: if undefined, accessible by all (authenticated)
+  roles?: UserRole[];
   index?: boolean;
-  layout: RouteLayout;
 }
 
-export const routes: AppRoute[] = [
-  // Auth Routes
+export const authRoutes: AppRoute[] = [
   {
     path: "login",
     element: <Login />,
-    layout: "auth",
   },
+];
+
+export const publicRoutes: AppRoute[] = [
   {
     path: "/",
     element: "Hello",
     index: true,
-    layout: "admin",
   },
-  // Admin Routes
+];
+
+export const sidebarRoutes: AppRoute[] = [
+  // Sidebar Routes
   {
     path: "dashboard",
     element: <Dashboard />,
-    layout: "admin",
+    roles: ["ADMIN"],
   },
   {
     path: "courses",
     element: <Courses />,
-    layout: "admin",
+    roles: ["ADMIN"],
   },
   {
     path: "users",
     element: <Users />,
     roles: ["ADMIN"],
-    layout: "admin",
   },
   {
     path: "users/roles",
     element: <Roles />,
     roles: ["ADMIN"],
-    layout: "admin",
   },
   {
     path: "employees",
     element: <Employees />,
-    layout: "admin",
   },
   {
     path: "settings/general",
     element: <GeneralSettings />,
     roles: ["ADMIN"],
-    layout: "admin",
   },
   {
     path: "settings/security",
     element: <SecuritySettings />,
     roles: ["ADMIN"],
-    layout: "admin",
   },
 ];

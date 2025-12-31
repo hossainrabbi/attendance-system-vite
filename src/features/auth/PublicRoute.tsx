@@ -1,16 +1,14 @@
 import { useAppSelector } from "@/store/store";
 import { Navigate, Outlet } from "react-router";
-import { selectIsAuthenticated } from "./authSlice";
 
 interface PublicRouteProps {
   children?: React.ReactNode;
 }
 
 export const PublicRoute = ({ children }: PublicRouteProps) => {
-  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const user = useAppSelector((state) => state.auth.user);
 
-  if (isAuthenticated) {
-    // If user is logged in, redirect to dashboard
+  if (user) {
     return <Navigate to="/" replace />;
   }
 

@@ -11,7 +11,7 @@ export const getThemeConfig = (): ThemeConfig => {
       colorError: $css("--color-error"),
       colorWarning: $css("--color-warning"),
       colorInfo: $css("--color-info"),
-      fontFamily: $css("--font-roboto"),
+      fontFamily: $css("--font-primary"),
     },
     components: {
       Layout: {

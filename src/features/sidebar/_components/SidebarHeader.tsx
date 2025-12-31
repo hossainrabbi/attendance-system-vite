@@ -23,12 +23,12 @@ export const SidebarHeader = ({
     <Flex
       align="center"
       justify={isCollapsed ? "center" : "start"}
-      className="h-16 px-4"
+      className={cn("h-16 px-4", isCollapsed && "px-3")}
     >
       <img
         src={isCollapsed ? IMAGES.LOGO_SM : IMAGES.LOGO}
         alt="Logo"
-        className={cn("object-contain", isCollapsed ? "h-14" : "h-12")}
+        className={cn("object-contain", isCollapsed ? "h-16" : "h-12")}
       />
       <Button
         size="small"
@@ -42,7 +42,7 @@ export const SidebarHeader = ({
           )
         }
         className={cn(
-          "ml-auto absolute -right-3 top-10 border-transparent shadow-sm",
+          "ml-auto absolute -right-3 top-19 border-transparent shadow-sm",
           isMobile && "hidden"
         )}
         onClick={onToggle}

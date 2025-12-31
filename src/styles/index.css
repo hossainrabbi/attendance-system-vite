@@ -16,5 +16,13 @@
   --color-text: #1f2937;
 
   /* Fonts */
-  --font-roboto: "Roboto", sans-serif;
+  --font-primary: "Roboto", sans-serif;
+}
+
+@utility container {
+  @apply mx-auto px-4;
+
+  @media (width >= --theme-screens-xl) {
+    @apply px-6;
+  }
 }

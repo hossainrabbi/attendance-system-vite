@@ -4,9 +4,9 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router";
-import App from "./App.tsx";
-import { getThemeConfig } from "./config/theme.config.ts";
+import { RouterProvider } from "react-router";
+import { getThemeConfig } from "./config/theme.config";
+import { router } from "./router";
 import { store } from "./store/store";
 import "./styles/index.css";
 
@@ -14,13 +14,11 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <HelmetProvider>
-        <BrowserRouter>
-          <StyleProvider layer>
-            <ConfigProvider theme={getThemeConfig()}>
-              <App />
-            </ConfigProvider>
-          </StyleProvider>
-        </BrowserRouter>
+        <StyleProvider layer>
+          <ConfigProvider theme={getThemeConfig()}>
+            <RouterProvider router={router} />
+          </ConfigProvider>
+        </StyleProvider>
       </HelmetProvider>
     </Provider>
   </StrictMode>

@@ -36,7 +36,7 @@ export const Sidebar = ({ menuItems }: Props) => {
       onCollapse={handleToggle}
       trigger={null}
       width={250}
-      className="hidden md:block min-h-screen shadow-lg custom-sidebar"
+      className="hidden md:block min-h-screen custom-sidebar"
       theme="light"
     >
       <SidebarHeader isCollapsed={isCollapsed} onToggle={handleToggle} />
