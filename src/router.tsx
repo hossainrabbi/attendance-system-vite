@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router";
 import App from "./App";
-import { ProtectedRoute } from "./features/auth/ProtectedRoute";
-import { PublicRoute } from "./features/auth/PublicRoute";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { PublicRoute } from "./components/PublicRoute";
 import { AuthLayout } from "./layouts/AuthLayout";
 import { SidebarLayout } from "./layouts/SidebarLayout";
 import {

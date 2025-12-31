@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import type { UserRole } from "./features/auth/authSlice";
+import type { UserRole } from "./app/features/auth/authSlice";
 import Courses from "./pages/Courses";
 import { Dashboard } from "./pages/Dashboard";
 import { Employees } from "./pages/Employees";
@@ -7,7 +7,7 @@ import { GeneralSettings } from "./pages/GeneralSettings";
 import { Roles } from "./pages/Roles";
 import { SecuritySettings } from "./pages/SecuritySettings";
 import Users from "./pages/Users";
-import Login from "./pages/auth/Signin";
+import Login from "./pages/auth/Login";
 
 export interface AppRoute {
   path: string;

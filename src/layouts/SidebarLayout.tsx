@@ -1,11 +1,11 @@
+import { useAppDispatch } from "@/app/store";
 import { menuItems } from "@/features/sidebar/menu";
 import { MobileSidebar } from "@/features/sidebar/MobileSidebar";
-import { toggleMobileMenu } from "@/features/sidebar/sidebar.slice";
-import { useAppDispatch } from "@/store/store";
+import { Sidebar } from "@/features/sidebar/Sidebar";
+import { toggleMobileMenu } from "@/features/sidebar/sidebarSlice";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Layout } from "antd";
 import { Outlet } from "react-router";
-import { Sidebar } from "../features/sidebar/Sidebar";
 
 const { Content, Header } = Layout;
 

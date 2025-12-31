@@ -1,5 +1,5 @@
+import type { UserRole } from "@/app/features/auth/authSlice";
 import React from "react";
-import type { UserRole } from "../auth/authSlice";
 import CourseIcon from "./_icons/CourseIcon";
 import DashboardIcon from "./_icons/DashboardIcon";
 import SettingIcon from "./_icons/SettingIcon";

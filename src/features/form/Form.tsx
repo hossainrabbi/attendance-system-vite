@@ -10,6 +10,7 @@ import RadioField from "./_components/RadioField";
 import SelectField from "./_components/SelectField";
 import SwitchField from "./_components/SwitchField";
 import TextField from "./_components/TextField";
+import "./form.css";
 
 interface FProps<T extends object> extends FormProps<T> {
   form?: FormInstance<T>;
@@ -39,6 +40,7 @@ function TypedForm<T extends object>({
       onValuesChange={onValuesChange}
       layout={layout}
       size={size}
+      className="custom-form"
       {...rest}
     >
       {children}

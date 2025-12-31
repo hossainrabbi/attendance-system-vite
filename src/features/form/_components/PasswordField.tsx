@@ -1,6 +1,6 @@
 import { Form, Input } from "antd";
 import type { PasswordProps } from "antd/es/input";
-import type { BaseFieldProps } from "../form.type";
+import type { BaseFieldProps } from "../formType";
 
 interface PasswordFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T>,

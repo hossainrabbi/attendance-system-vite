@@ -1,7 +1,7 @@
 import CNumberInput from "@/components/ui/form/CustomNumberInput";
 import { Form } from "antd";
 import type { InputNumberProps } from "antd/es/input-number";
-import type { BaseFieldProps } from "../form.type";
+import type { BaseFieldProps } from "../formType";
 
 interface NumberFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T>,

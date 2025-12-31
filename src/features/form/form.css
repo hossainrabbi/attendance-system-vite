@@ -1,0 +1,7 @@
+@import "../../styles/index.css";
+
+.custom-form {
+  .ant-form-item-required::before {
+    @apply absolute -right-0.5 top-2.5;
+  }
+}

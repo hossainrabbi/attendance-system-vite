@@ -1,6 +1,6 @@
-import { useAppDispatch } from "@/store/store";
-import type { ConfirmPayload } from "../confirm.slice";
-import { openConfirm } from "../confirm.slice";
+import { useAppDispatch } from "@/app/store";
+import type { ConfirmPayload } from "../confirmSlice";
+import { openConfirm } from "../confirmSlice";
 
 /**
  * useConfirm

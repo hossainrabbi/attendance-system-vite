@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/store/store";
+import { useAppSelector } from "@/app/store";
 import { Navigate, Outlet } from "react-router";
 
 interface PublicRouteProps {

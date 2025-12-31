@@ -1,6 +1,6 @@
 import { ENV, IMAGES } from "@/config/global.config";
-import Login from "@/features/auth/_components/Login";
 import { Flex } from "antd";
+import LoginForm from "./_components/LoginForm";
 
 export default function Signin() {
   return (
@@ -11,7 +11,7 @@ export default function Signin() {
         <p className="text-sm text-text">Please login to your account</p>
       </Flex>
 
-      <Login />
+      <LoginForm />
     </>
   );
 }

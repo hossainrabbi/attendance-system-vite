@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/store/store";
+import { useAppSelector } from "@/app/store";
 import { useMemo } from "react";
 import type { MenuItem } from "../menu";
 

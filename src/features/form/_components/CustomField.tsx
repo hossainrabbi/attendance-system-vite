@@ -1,6 +1,6 @@
 import { Form } from "antd";
 import React from "react";
-import type { BaseFieldProps } from "../form.type";
+import type { BaseFieldProps } from "../formType";
 
 interface FCustomFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T> {

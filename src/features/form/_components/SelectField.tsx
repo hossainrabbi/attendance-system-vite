@@ -1,7 +1,7 @@
 import CSelect from "@/components/ui/form/CustomSelect";
 import { Form } from "antd";
 import type { DefaultOptionType, SelectProps } from "antd/es/select";
-import type { BaseFieldProps } from "../form.type";
+import type { BaseFieldProps } from "../formType";
 
 interface SelectFieldProps<T = Record<string, unknown>, V = unknown>
   extends BaseFieldProps<T>,

@@ -1,12 +1,12 @@
+import { useAppDispatch, useAppSelector } from "@/app/store";
 import { Layout } from "antd";
-import { useAppDispatch, useAppSelector } from "../../store/store";
 import { CollapsedMenu } from "./_components/CollapsedMenu";
 import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";
 import { useMenuFilter } from "./_hooks/useMenuFilter";
 import type { MenuItem } from "./menu";
 import "./sidebar.css";
-import { toggleSidebar } from "./sidebar.slice";
+import { toggleSidebar } from "./sidebarSlice";
 
 const { Sider } = Layout;
 

@@ -2,7 +2,7 @@
 import { Outlet } from "react-router";
 import { Fragment } from "react/jsx-runtime";
 import { ToastProvider } from "./contexts/ToastProvider";
-import { GlobalConfirmModal } from "./features/modal/Modal";
+import { GlobalConfirmModal } from "./features/modal/GlobalConfirmModal";
 
 export default function App() {
   return (

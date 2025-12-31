@@ -1,12 +1,12 @@
+import { useAppDispatch, useAppSelector } from "@/app/store";
 import { Drawer } from "antd";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { useAppDispatch, useAppSelector } from "../../store/store";
 import { ExpandedMenu } from "./_components/ExpandedMenu";
 import { SidebarHeader } from "./_components/SidebarHeader";
 import { useMenuFilter } from "./_hooks/useMenuFilter";
 import type { MenuItem } from "./menu";
-import { setMobileMenuOpen } from "./sidebar.slice";
+import { setMobileMenuOpen } from "./sidebarSlice";
 
 interface Props {
   menuItems: MenuItem[];

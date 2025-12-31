@@ -3,7 +3,7 @@ import CDatePicker, {
 } from "@/components/ui/form/CustomDatePicker";
 import { DATE_FORMATS } from "@/constants/constants";
 import { Form } from "antd";
-import type { BaseFieldProps } from "../form.type";
+import type { BaseFieldProps } from "../formType";
 
 interface DateFieldProps<T = Record<string, unknown>>
   extends BaseFieldProps<T>,

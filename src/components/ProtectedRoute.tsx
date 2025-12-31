@@ -1,6 +1,6 @@
-import { useAppSelector } from "@/store/store";
+import { type UserRole } from "@/app/features/auth/authSlice";
+import { useAppSelector } from "@/app/store";
 import { Navigate, Outlet } from "react-router";
-import { type UserRole } from "./authSlice";
 
 interface ProtectedRouteProps {
   allowedRoles?: UserRole[];

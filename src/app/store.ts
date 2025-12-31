@@ -4,9 +4,9 @@ import {
   useSelector,
   type TypedUseSelectorHook,
 } from "react-redux";
-import authReducer from "../features/auth/authSlice";
-import confirmReducer from "../features/modal/confirm.slice";
-import sidebarReducer from "../features/sidebar/sidebar.slice";
+import confirmReducer from "../features/modal/confirmSlice";
+import sidebarReducer from "../features/sidebar/sidebarSlice";
+import authReducer from "./features/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
