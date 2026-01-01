@@ -28,12 +28,9 @@ export const authApi = apiService.injectEndpoints({
             },
           };
 
-          // ✅ Persist auth
-          localStorage.setItem("auth", JSON.stringify(loginData));
           dispatch(setUser(loginData));
         } catch {
-          // ✅ Cleanup on failure
-          localStorage.removeItem("auth");
+          // Errors are handled by the common handleSubmit utility or RTK Query globally
         }
       },
     }),

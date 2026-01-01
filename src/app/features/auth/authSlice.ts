@@ -19,12 +19,6 @@ const initialState: AuthState = {
   user: null,
   accessToken: null,
   refreshToken: null,
-  // user: {
-  //   id: "1",
-  //   name: "Admin User",
-  //   email: "admin@example.com",
-  //   role: "ADMIN",
-  // },
 };
 
 export const authSlice = createSlice({

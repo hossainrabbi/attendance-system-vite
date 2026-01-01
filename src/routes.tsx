@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-import type { UserRole } from "./app/features/auth/authSlice";
 import Courses from "./pages/Courses";
 import { Dashboard } from "./pages/Dashboard";
 import { Employees } from "./pages/Employees";
@@ -8,6 +7,7 @@ import { Roles } from "./pages/Roles";
 import { SecuritySettings } from "./pages/SecuritySettings";
 import Users from "./pages/Users";
 import Login from "./pages/auth/Login";
+import type { UserRole } from "./types";
 
 export interface AppRoute {
   path: string;
@@ -24,11 +24,11 @@ export const authRoutes: AppRoute[] = [
 ];
 
 export const publicRoutes: AppRoute[] = [
-  {
-    path: "/",
-    element: "Hello",
-    index: true,
-  },
+  // {
+  //   path: "/",
+  //   element: "Hello",
+  //   index: true,
+  // },
 ];
 
 export const sidebarRoutes: AppRoute[] = [
@@ -36,22 +36,22 @@ export const sidebarRoutes: AppRoute[] = [
   {
     path: "dashboard",
     element: <Dashboard />,
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
   {
     path: "courses",
     element: <Courses />,
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
   {
     path: "users",
     element: <Users />,
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
   {
     path: "users/roles",
     element: <Roles />,
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
   {
     path: "employees",
@@ -60,11 +60,11 @@ export const sidebarRoutes: AppRoute[] = [
   {
     path: "settings/general",
     element: <GeneralSettings />,
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
   {
     path: "settings/security",
     element: <SecuritySettings />,
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
 ];

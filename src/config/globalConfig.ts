@@ -16,4 +16,5 @@ export const REGEX = {
 export const IMAGES = {
   LOGO: "/assets/images/logo.png",
   LOGO_SM: "/assets/images/logo-sm.png",
+  avatar: "/assets/images/avatar.svg",
 };

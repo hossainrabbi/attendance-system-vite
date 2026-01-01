@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/app/store";
+import { useAuth } from "@/hooks/useAuth";
 import type { UserRole } from "@/types";
 import { Navigate, Outlet } from "react-router";
 
@@ -11,14 +11,14 @@ export const ProtectedRoute = ({
   allowedRoles,
   children,
 }: ProtectedRouteProps) => {
-  const userRole = useAppSelector((state) => state.auth.user?.role);
+  const { isAuthenticated, user } = useAuth();
 
-  if (!userRole) {
+  if (!isAuthenticated) {
     // If no user is logged in, redirect to login
     return <Navigate to="/auth/login" replace />;
   }
 
-  if (allowedRoles && !allowedRoles.includes(userRole)) {
+  if (allowedRoles && user && !allowedRoles.includes(user.role)) {
     // If user doesn't have required role, redirect to dashboard
     return <Navigate to="/auth/login" replace />;
   }

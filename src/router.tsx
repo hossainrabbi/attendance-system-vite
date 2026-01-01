@@ -3,7 +3,7 @@ import App from "./App";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { PublicRoute } from "./components/PublicRoute";
 import { AuthLayout } from "./layouts/AuthLayout";
-import { SidebarLayout } from "./layouts/SidebarLayout";
+import { SidebarLayout } from "./layouts/sidebar/SidebarLayout";
 import {
   authRoutes,
   publicRoutes,
@@ -45,6 +45,7 @@ export const router = createBrowserRouter([
         ),
         children: mapRoutes(sidebarRoutes),
       },
+      { path: "/", element: <Navigate to="/dashboard" replace /> },
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },

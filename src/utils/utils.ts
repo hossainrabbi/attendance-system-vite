@@ -21,3 +21,25 @@ export const normalizePhoneNumber = (phone: string): string => {
 
   return `+88${trimmedPhone}`;
 };
+
+/**
+ * Checks whether a specific segment of the current URL path
+ * matches the given key.
+ *
+ * @param {number} position - The index of the path segment to check
+ *                            (0-based after splitting by "/").
+ * @param {string} key - The path value to compare against.
+ *
+ * @returns {boolean} Returns true if the path segment at the given
+ * position matches the key, otherwise false.
+ *
+ * @example
+ * // URL: /dashboard/users
+ * isActivePath(0, "dashboard"); // true
+ * isActivePath(1, "users"); // true
+ * isActivePath(1, "settings"); // false
+ */
+export const isActivePath = (position: number, key: string) => {
+  const pathArr = window.location.pathname.split("/").filter((str) => str);
+  return pathArr[position] === key;
+};

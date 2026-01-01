@@ -78,6 +78,7 @@ export const getThemeConfig = (): ThemeConfig => {
       /* Button Customization */
       Button: {
         controlHeightLG: 44,
+        controlHeight: 38,
         borderRadius: 6,
         paddingBlock: 10,
         paddingInline: 16,
