@@ -1,4 +1,4 @@
-import type { UserRole } from "@/app/features/auth/authSlice";
+import type { UserRole } from "@/types";
 import React from "react";
 import CourseIcon from "./_icons/CourseIcon";
 import DashboardIcon from "./_icons/DashboardIcon";
@@ -20,14 +20,14 @@ export const menuItems: MenuItem[] = [
     label: "Dashboard",
     icon: <DashboardIcon />,
     path: "/dashboard",
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
   {
     key: "courses",
     label: "Courses",
     icon: <CourseIcon />,
     path: "/courses",
-    roles: ["ADMIN"],
+    roles: ["super_admin"],
   },
   {
     key: "users",
@@ -38,13 +38,13 @@ export const menuItems: MenuItem[] = [
         key: "users-list",
         label: "All Users",
         path: "/users",
-        roles: ["ADMIN"],
+        roles: ["super_admin"],
       },
       {
         key: "users-roles",
         label: "Roles & Permissions",
         path: "/users/roles",
-        roles: ["ADMIN"],
+        roles: ["super_admin"],
       },
     ],
   },
@@ -57,13 +57,13 @@ export const menuItems: MenuItem[] = [
         key: "settings-general",
         label: "General",
         path: "/settings/general",
-        roles: ["ADMIN"],
+        roles: ["super_admin"],
       },
       {
         key: "settings-security",
         label: "Security",
         path: "/settings/security",
-        roles: ["ADMIN"],
+        roles: ["super_admin"],
       },
     ],
   },

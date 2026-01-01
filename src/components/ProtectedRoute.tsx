@@ -1,5 +1,5 @@
-import { type UserRole } from "@/app/features/auth/authSlice";
 import { useAppSelector } from "@/app/store";
+import type { UserRole } from "@/types";
 import { Navigate, Outlet } from "react-router";
 
 interface ProtectedRouteProps {
@@ -15,12 +15,12 @@ export const ProtectedRoute = ({
 
   if (!userRole) {
     // If no user is logged in, redirect to login
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/auth/login" replace />;
   }
 
   if (allowedRoles && !allowedRoles.includes(userRole)) {
     // If user doesn't have required role, redirect to dashboard
-    return <Navigate to="/" replace />;
+    return <Navigate to="/auth/login" replace />;
   }
 
   return children ? <>{children}</> : <Outlet />;

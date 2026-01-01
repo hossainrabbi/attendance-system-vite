@@ -1,38 +1,46 @@
+import type { UserRole } from "@/types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-export type UserRole = "ADMIN" | "USER";
-
 interface User {
-  id: string;
-  name: string;
-  email: string;
+  // id: string;
+  // name: string;
+  // email: string;
   role: UserRole;
 }
 
 interface AuthState {
   user: User | null;
+  accessToken: string | null;
+  refreshToken: string | null;
 }
 
 // Mock initial user for development
 const initialState: AuthState = {
-  // user: null,
-  user: {
-    id: "1",
-    name: "Admin User",
-    email: "admin@example.com",
-    role: "ADMIN",
-  },
+  user: null,
+  accessToken: null,
+  refreshToken: null,
+  // user: {
+  //   id: "1",
+  //   name: "Admin User",
+  //   email: "admin@example.com",
+  //   role: "ADMIN",
+  // },
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
-      state.user = action.payload;
+    setUser: (state, action: PayloadAction<AuthState>) => {
+      state.user = action.payload.user;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
     },
     logout: (state) => {
       state.user = null;
+      state.accessToken = null;
+      state.refreshToken = null;
+      localStorage.clear();
     },
   },
 });
