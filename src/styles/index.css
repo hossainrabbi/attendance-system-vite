@@ -19,3 +19,27 @@
   /* Fonts */
   --font-primary: "Roboto", sans-serif;
 }
+
+/* Container Utility */
+@utility container {
+  @apply mx-auto px-4;
+
+  @media (width >= --theme-screens-xl) {
+    @apply px-6;
+  }
+}
+
+/* Animation Utility */
+@utility animate-spin {
+  animation: spin 2s linear infinite;
+}
+
+/* Keyframes */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

@@ -39,6 +39,11 @@ export const sidebarRoutes: AppRoute[] = [
     roles: ["super_admin"],
   },
   {
+    path: "dashboard",
+    element: <h2>Admin Dashboard</h2>,
+    roles: ["super_admin"],
+  },
+  {
     path: "courses",
     element: <Courses />,
     roles: ["super_admin"],
